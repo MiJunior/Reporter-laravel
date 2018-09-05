@@ -1,15 +1,17 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
-
-class PagesController extends Controller
-{   
-    public function __construct()
+use Illuminate\Support\Facades\DB;
+class UserController extends Controller
+{
+    
+    function __construct()
     {
-        $this->middleware('role:admin');
+        $this->middleware(['permission:role-edit','permission:role-delete']);
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +19,11 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $title = "Admin Pages";
-        return view('admin.index')->with('title', $title);//
+        $title = "Users";
+        $users=User::orderby('id','asc')->paginate(15);
+        $allRoles=Role::all();
+        return view('admin.user',compact(['users','allRoles', 'title']));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +33,6 @@ class PagesController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -41,7 +43,6 @@ class PagesController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -52,7 +53,6 @@ class PagesController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,7 +63,6 @@ class PagesController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -73,9 +72,14 @@ class PagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $roles=$request->roles;
+        DB::table('role_user')->where('user_id',$id)->delete();
+        foreach ($roles as $role){
+            $user->attachRole($role);
+        }
+        return back()->withMessage('Updated');
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -30,6 +30,14 @@
 		      		<li class="nav-item active">
 		        		<a class="nav-link" href="/ban">Ban Table <span class="sr-only">(current)</span></a>
 		      		</li>
+                    @role('admin')
+                    <li class="nav-item active">
+		        		<a class="nav-link" href="/admin">Admins <span class="sr-only">(current)</span></a>
+		      		</li>
+                    <li class="nav-item active">
+		        		<a class="nav-link" href="/role">Role <span class="sr-only">(current)</span></a>
+		      		</li>
+                    @endrole
 		    	</ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
