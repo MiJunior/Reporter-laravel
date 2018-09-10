@@ -43,7 +43,13 @@
       <td>{{$ban->BanType}}</td>
       <td>{{$ban->BanTime}}</td>
       <td>{{$ban->created_by}}</td>
-      @role('admin')<td><a href="/ban/{{$ban->id}}/edit" class="fas fa-edit" ></a> <i class="fas fa-trash-alt"></i></td>@endrole
+      @role('admin')<td>
+        <form onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('ban.destroy', $ban->id)}}" method="post">
+        <a href="/ban/{{$ban->id}}/edit" class="fas fa-edit" ></a>
+               @method('DELETE')
+              {{ csrf_field() }}
+              <button type="submit" class="btn sm"><i class="fas fa-trash-alt"></i></button>
+            </form></td>@endrole
     </tr>
     @endforeach
     
