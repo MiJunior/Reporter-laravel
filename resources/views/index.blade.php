@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
@@ -15,9 +19,10 @@
     
     <a class="navbar-brand" href="/ban">Bans</a>
  -->
+ 
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/admin">
+            <a class="navbar-brand" href="/ban">
                 <img src="/images/icon.svg" width="30" height="30" class="d-inline-block align-top" alt="">
                 GM Reporter
             </a>
@@ -30,6 +35,24 @@
 		      		<li class="nav-item active">
 		        		<a class="nav-link" href="/ban">Ban Table <span class="sr-only">(current)</span></a>
 		      		</li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Events
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Report</a>
+                    <a class="dropdown-item" href="/event">List</a>
+                    @role('admin')
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/event/create">Create</a>
+                    </div>
+                    @endrole
+                    @role('gm')
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/event/create">Create</a>
+                    </div>
+                    @endrole
+                     </li>
                     @role('admin')
                     <li class="nav-item active">
 		        		<a class="nav-link" href="/admin">Admins <span class="sr-only">(current)</span></a>
