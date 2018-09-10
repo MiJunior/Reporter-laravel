@@ -148,6 +148,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class, //ENTRUST (Laravel 5 Package)
+        //uploadimage
+        Spatie\Glide\GlideServiceProvider::class,
+        Dan\UploadImage\UploadImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -212,7 +215,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //entrust
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        //uploadimage
+        'GlideImage' => Spatie\Glide\GlideImageFacade::class,
+        'UploadImage' => Dan\UploadImage\UploadImageFacade::class,
     ],
 
 ];
