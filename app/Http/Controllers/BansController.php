@@ -47,7 +47,6 @@ class BansController extends Controller
     public function edit($id){
         $title = "Edit #$id";
         $ban = Ban::findOrFail($id);
-
         return view('ban.edit', compact('ban', 'title'));
     }
 
@@ -55,6 +54,13 @@ class BansController extends Controller
     public function update($id, BanRequest $request){
         $ban = Ban::findOrFail($id);
         $ban->update(Request::all());
+        return redirect('ban');
+    }
+
+    public function destroy($id)
+    {
+        $ban = Ban::find($id);
+        $ban->delete();
         return redirect('ban');
     }
 }
