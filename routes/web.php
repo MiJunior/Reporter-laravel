@@ -24,11 +24,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('ban', 'BansController@index');
 
 Route::get('ban/add', 'BansController@add');
+
+
 Route::resource('role', 'RoleController');
 Route::post('ban', 'BansController@store');
 
 Route::resource('user', 'UserController');
 Route::resource('ban', 'BansController');
+
+Route::resource('event', 'EventController');
 
 Route::get('/admin', [
     'as' => 'admin.index',
