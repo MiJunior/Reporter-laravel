@@ -1,4 +1,4 @@
-@extends('admin.layout.admin')
+@extends('index')
 @section('content')
     <h3>Edit Roles</h3>
 
@@ -18,19 +18,12 @@
     		<label for="description">Description</label>
     		<input type="text" class="form-control" name="description" id="" placeholder="Description" value="{{$role->description}}">
     	</div>
-
         <div class="form-group text-left">
             <h3>Permissions</h3>
             @foreach($permissions as $permission)
     		<input type="checkbox" {{in_array($permission->id,$role_permissions)?"checked":""}}   name="permission[]" value="{{$permission->id}}" > {{$permission->name}} <br>
             @endforeach
     	</div>
-
-
-
-
-
-
     	<button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

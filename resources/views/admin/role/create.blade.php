@@ -1,4 +1,4 @@
-@extends('admin.layout.admin')
+@extends('index')
 @section('content')
     <h3>Create Roles</h3>
 

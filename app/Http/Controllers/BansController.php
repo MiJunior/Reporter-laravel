@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use \App\Ban;
-use Request;
 use App\Http\Requests\BanRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +18,7 @@ class BansController extends Controller
     */
     public function index(){
         $title = "Страница банов";
-        $bans = Ban::orderby('id','desc')->paginate(15); //пагинация
+        $bans = Ban::orderby('id','desc')->paginate(15);
         return view('ban.index', compact('bans', 'title'));
     }
     /*
@@ -34,7 +33,7 @@ class BansController extends Controller
         $username = Auth::user()->name;
         $newData = $request->all();
         $newData['created_by'] = $username ;
-        Ban::create($newData);//заполняем бд
+        Ban::create($newData);
         return redirect('ban');  
     }
 
@@ -45,7 +44,7 @@ class BansController extends Controller
     }
 
     public function edit($id){
-        $title = "Edit #$id";
+        $title = "Edit";
         $ban = Ban::findOrFail($id);
         return view('ban.edit', compact('ban', 'title'));
     }
@@ -53,7 +52,7 @@ class BansController extends Controller
     
     public function update($id, BanRequest $request){
         $ban = Ban::findOrFail($id);
-        $ban->update(Request::all());
+        $ban->update(request()->all());
         return redirect('ban');
     }
 

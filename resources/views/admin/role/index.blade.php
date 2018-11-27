@@ -1,4 +1,4 @@
-@extends('admin.layout.admin')
+@extends('index')
 @section('content')
     <h3>Roles</h3>
     <a class="btn btn-success" style="margin: 10px" href="{{route('role.create')}}"> Create new Role</a>

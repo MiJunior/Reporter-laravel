@@ -1,4 +1,4 @@
-@extends('admin.layout.admin')
+@extends('index')
 @section('content')
 
 кнопки для добавлений и просмотра

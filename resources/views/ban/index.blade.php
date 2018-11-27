@@ -3,7 +3,7 @@
 @section('content')
     @role('admin')
     <h2 align="center">Add notes to Bans table</h2>
-    {!! Form::open(['url' => 'ban']) !!}
+    {!! Form::open(['action' => 'BansController@store']) !!}
     @include('ban._form')
     {!! Form::close() !!}
     @include('errors.list')

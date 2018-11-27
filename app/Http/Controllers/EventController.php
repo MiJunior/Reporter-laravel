@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Str;
 use App\Event;
 use Illuminate\Http\Request;
+use App\Http\Requests\EventRequest;
 use UploadImage;
 use Dan\UploadImage\Exceptions\UploadImageException;
 use Illuminate\Support\Facades\Auth;
@@ -42,11 +43,11 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param EventRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
+    public function store(EventRequest $request)
+    {
         $username = Auth::user()->name;
         $file = $request->file('image');
         $newData = $request->all();
